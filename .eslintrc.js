@@ -3,13 +3,13 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
+    jest: true,
   },
   parser: "babel-eslint",
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "prettier",
-    "prettier/react",
   ],
   parserOptions: {
     ecmaVersion: "2017",
