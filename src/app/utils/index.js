@@ -1,3 +1,5 @@
+import { maxLoadOfRequest } from '../constants/pagination-config'
+
 export const digViaAttribute = (object, attrName) => {
   let results = []
   object.map((data) =>
@@ -13,13 +15,17 @@ export const extractEntriesForPage = (data, page, entriesPerPage) =>
   data.slice(page * entriesPerPage - entriesPerPage, page * entriesPerPage)
 
 export const evaluatePageForApi = (page, entriesPerPage) =>
-  Math.trunc((page - 1) / entriesPerPage) + 1
+  Math.trunc(page / noOfPagesPerRequest(entriesPerPage)) + 1
 
 export const evaluatePageForResponse = (page, entriesPerPage) =>
-  page % entriesPerPage == 0 ? entriesPerPage : page % entriesPerPage
+  Math.trunc(page % noOfPagesPerRequest(entriesPerPage))
 
 export const paginationStart = (currentPage, load) =>
-  Math.ceil(currentPage / load) * load - load + 1
+  Math.trunc(currentPage / noOfPagesPerRequest(load)) *
+  noOfPagesPerRequest(load)
 
 export const paginationEnd = (currentPage, load, totalPages) =>
   paginationStart(currentPage, load) + totalPages
+
+export const noOfPagesPerRequest = (entriesPerPage) =>
+  maxLoadOfRequest / entriesPerPage

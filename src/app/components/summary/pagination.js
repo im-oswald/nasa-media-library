@@ -11,7 +11,7 @@ const Pagination = ({ list, setList, load }) => {
   function previousPage(event) {
     event.preventDefault()
 
-    if (!list.currentPage || list.currentPage == 1) {
+    if ([undefined, 0].includes(list.currentPage)) {
       error('No previous page found')
       return
     }
@@ -22,7 +22,7 @@ const Pagination = ({ list, setList, load }) => {
   function nextPage(event) {
     event.preventDefault()
 
-    if (!list.currentPage) {
+    if (list.currentPage == undefined) {
       error('No next page found')
       return
     }

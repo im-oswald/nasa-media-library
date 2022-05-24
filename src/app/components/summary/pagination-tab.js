@@ -9,7 +9,7 @@ const PaginationTab = ({ text, selected, changePage }) => {
   const markup = () => (
     <li onClick={onPageChanged}>
       <a href='' className={PaginationHelper.getClasses(selected)}>
-        {text}
+        {text + 1}
       </a>
     </li>
   )

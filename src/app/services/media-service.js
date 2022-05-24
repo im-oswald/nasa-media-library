@@ -12,7 +12,7 @@ export const search = (
   callback,
   entriesPerPage,
   terms = '',
-  page = 1,
+  page = 0,
   onlyImages = true
 ) => {
   let query = `q=${terms}&page=${evaluatePageForApi(page, entriesPerPage)}`
@@ -28,7 +28,7 @@ export const search = (
         links: response.links,
         data: extractEntriesForPage(
           data,
-          evaluatePageForResponse(page, entriesPerPage),
+          evaluatePageForResponse(page, entriesPerPage) + 1,
           entriesPerPage
         ),
         currentPage: page,
