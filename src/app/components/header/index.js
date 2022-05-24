@@ -1,13 +1,10 @@
-import { useRef } from 'react'
 import MobileNav from './mobile-nav'
 import Nav from './nav'
 
-const Header = () => {
-  const mobileNav = useRef(null)
-
-  const markup = (mobileNav) => (
+const Header = ({ setList, mobileNav }) => {
+  const markup = () => (
     <nav className='bg-white shadow-lg'>
-      <Nav toggleMenu={toggleMenu} />
+      <Nav toggleMenu={toggleMenu} setList={setList} />
       <MobileNav mobileNav={mobileNav} />
     </nav>
   )
@@ -16,7 +13,7 @@ const Header = () => {
     mobileNav.current?.classList.toggle('hidden')
   }
 
-  return markup(mobileNav)
+  return markup()
 }
 
 export default Header

@@ -3,15 +3,15 @@ import MobileMenuButton from './mobile-menu-button.js'
 import NavItems from './nav-items.js'
 import SearchBox from './search-box.js'
 
-const Nav = ({ toggleMenu }) => {
-  const markup = (toggleMenu) => (
+const Nav = ({ toggleMenu, setList }) => {
+  const markup = () => (
     <div className='mx-auto px-4'>
       <div className='flex justify-between'>
         <div className='flex space-x-7'>
           <Logo />
         </div>
 
-        <SearchBox />
+        <SearchBox setList={setList} />
 
         <div className='hidden md:flex items-center space-x-3'>
           <NavItems />
@@ -22,7 +22,7 @@ const Nav = ({ toggleMenu }) => {
     </div>
   )
 
-  return markup(toggleMenu)
+  return markup()
 }
 
 export default Nav

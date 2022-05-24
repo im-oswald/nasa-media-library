@@ -97,3 +97,11 @@ You can view the development server at `localhost:3000`.
 - [`dotenv-webpack`](https://github.com/mrsteele/dotenv-webpack) - Supports dotenv and other environment variables
 - [`@svgr/webpack`](https://github.com/mrsteele/dotenv-webpack) - SVGR can be used as a webpack loader, this way you can import your SVG directly as a React Component.
 - [`babel-jest`](https://www.npmjs.com/package/babel-jest) - Babel jest plugin for transforimg `.js` and `.jsx` files
+
+### Http
+
+- [`axios`](https://github.com/axios/axios) - Promise based client to make HTTP requests from browser
+
+### Alert
+
+- [`react-hot-toast`](https://github.com/timolins/react-hot-toast) - Client to create alert to intimate users about errors

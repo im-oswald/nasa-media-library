@@ -36,6 +36,7 @@ module.exports = {
     "consistent-return": "error",
     "babel/no-invalid-this": "error",
     "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "react/prop-types": "off"
   },
   settings: {
     react: {
