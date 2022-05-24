@@ -18,9 +18,7 @@ const List = ({ mobileNav, list }) => {
   const renderItems = () => {
     let html = []
 
-    list.data.forEach((item, index) =>
-      html.push(<Item item={item} key={index} />)
-    )
+    list.data.map((item, index) => html.push(<Item item={item} key={index} />))
     html.push()
     return html
   }

@@ -5,7 +5,7 @@ import { navItems } from '../../constants/header-config'
 const NavItems = () => {
   const renderNavItems = () => {
     let html = []
-    navItems.forEach((item) =>
+    navItems.map((item) =>
       html.push(
         <li className='list-none'>
           <a

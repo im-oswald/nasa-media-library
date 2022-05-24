@@ -1,18 +1,55 @@
 import PaginationTab from './pagination-tab'
 import { search } from '../../services/media-service'
+import { paginationStart, paginationEnd } from '../../utils'
+import { error } from '../../services/toast'
 
-const Pagination = ({ list, setList }) => {
+const Pagination = ({ list, setList, load }) => {
   function changePage(page) {
-    search(setList, list.searchedTerms, page)
+    search(setList, load, list.searchedTerms, page)
+  }
+
+  function previousPage(event) {
+    event.preventDefault()
+
+    if (!list.currentPage || list.currentPage == 1) {
+      error('No previous page found')
+      return
+    }
+
+    search(setList, load, list.searchedTerms, list.currentPage - 1)
+  }
+
+  function nextPage(event) {
+    event.preventDefault()
+
+    if (!list.currentPage) {
+      error('No next page found')
+      return
+    }
+
+    search(checkList, load, list.searchedTerms, list.currentPage + 1)
+  }
+
+  const checkList = (result) => {
+    if (result.data.length) {
+      setList(result)
+    } else {
+      error('No next page found')
+    }
   }
 
   const getPaginationTabs = () => {
     let html = []
-    for (let i = 0; i < list.totalPages; i++) {
+    for (
+      let currentTab = paginationStart(list.currentPage, load);
+      currentTab < paginationEnd(list.currentPage, load, list.totalPages);
+      currentTab++
+    ) {
       html.push(
         <PaginationTab
-          selected={i + 1 == list.currentPage}
-          text={i + 1}
+          key={currentTab}
+          selected={currentTab == list.currentPage}
+          text={currentTab}
           changePage={changePage}
         />
       )
@@ -26,6 +63,7 @@ const Pagination = ({ list, setList }) => {
         <li>
           <a
             href='#'
+            onClick={previousPage}
             className='py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
           >
             Previous
@@ -35,6 +73,7 @@ const Pagination = ({ list, setList }) => {
         <li>
           <a
             href='#'
+            onClick={nextPage}
             className='py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
           >
             Next

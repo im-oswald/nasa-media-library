@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { search } from '../../services/media-service'
 import { error } from '../../services/toast'
 import ValidationHelper from '../../helpers/validation-helper'
 
-const SearchBox = ({ setList }) => {
+const SearchBox = ({ setList, load }) => {
   const [terms, setTerms] = useState('')
 
   function onChangeTerms(event) {
@@ -18,16 +18,12 @@ const SearchBox = ({ setList }) => {
       return
     }
 
-    search(populateResults, terms)
+    search(populateResults, load, terms)
   }
 
   const populateResults = (result) => {
     setList(result)
   }
-
-  useEffect(() => {
-    document.title = `Showing Results`
-  })
 
   const markup = () => (
     <div className='md:flex md:w-1/4 items-center space-x-1 py-4'>
