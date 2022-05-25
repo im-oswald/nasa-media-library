@@ -1,7 +1,7 @@
 import React from 'react'
 import { loadOptions } from '../../constants/pagination-config'
 
-const LoadChanger = ({ load, setLoad, list, setList }) => {
+const LoadChanger = ({ load, setLoad }) => {
   const renderOptions = () =>
     loadOptions.map((option) => (
       <option key={option} value={option} selected={option == load}>

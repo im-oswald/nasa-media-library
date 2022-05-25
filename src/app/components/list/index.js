@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './item'
 import NotFound from '../not-found'
 
-const List = ({ mobileNav, list }) => {
+const List = ({ list, searchBoxRef }) => {
   const markup = () => (
     <React.Fragment>
       {list.data && list.data.length ? (
@@ -10,7 +10,7 @@ const List = ({ mobileNav, list }) => {
           <div className='grid grid-cols-4 gap-4'>{renderItems(list)}</div>
         </div>
       ) : (
-        <NotFound mobileNav={mobileNav} />
+        <NotFound searchBoxRef={searchBoxRef} />
       )}
     </React.Fragment>
   )

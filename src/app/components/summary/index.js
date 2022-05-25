@@ -18,12 +18,7 @@ const Summary = ({
       </h1>
       <div className='flex flex-col md:flex-row justify-between'>
         <div>
-          <LoadChanger
-            list={list}
-            setList={setList}
-            load={load}
-            setLoad={setLoad}
-          />
+          <LoadChanger load={load} setLoad={setLoad} />
         </div>
         <div>
           <Filter setStartYear={setStartYear} setEndYear={setEndYear} />

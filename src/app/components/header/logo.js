@@ -1,7 +1,7 @@
 const Logo = () => {
   const markup = () => (
     <div>
-      <a href='#' className='flex items-center py-4 px-2'>
+      <a href='/' className='flex items-center py-4 px-2'>
         <img
           src='/assets/icons/favicon.png'
           alt='Logo'

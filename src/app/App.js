@@ -13,6 +13,7 @@ const App = () => {
   const [startYear, setStartYear] = useState(null)
   const [endYear, setEndYear] = useState(null)
   const mobileNav = useRef(null)
+  const searchBoxRef = useRef(null)
 
   useEffect(() => {
     if (list.searchedTerms) {
@@ -29,7 +30,12 @@ const App = () => {
 
   const markup = () => (
     <React.Fragment>
-      <Header mobileNav={mobileNav} setList={setList} load={load} />
+      <Header
+        mobileNav={mobileNav}
+        setList={setList}
+        load={load}
+        searchBoxRef={searchBoxRef}
+      />
       {list.data && (
         <Summary
           list={list}
@@ -41,7 +47,7 @@ const App = () => {
           isFiltered={startYear || endYear}
         />
       )}
-      <List mobileNav={mobileNav} list={list} />
+      <List list={list} searchBoxRef={searchBoxRef} />
 
       <Toaster position={alertPosition} />
     </React.Fragment>

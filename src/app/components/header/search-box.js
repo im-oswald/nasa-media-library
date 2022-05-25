@@ -3,7 +3,7 @@ import { search } from '../../services/media-service'
 import { error } from '../../services/toast'
 import ValidationHelper from '../../helpers/validation-helper'
 
-const SearchBox = ({ setList, load }) => {
+const SearchBox = ({ setList, load, searchBoxRef }) => {
   const [terms, setTerms] = useState('')
 
   function onChangeTerms(event) {
@@ -19,6 +19,8 @@ const SearchBox = ({ setList, load }) => {
     }
 
     search(populateResults, load, terms)
+
+    setTerms('')
   }
 
   const populateResults = (result) => {
@@ -31,6 +33,7 @@ const SearchBox = ({ setList, load }) => {
         className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         id='search-box'
         type='text'
+        ref={searchBoxRef}
         placeholder='Type and hit enter to search'
         value={terms}
         onChange={onChangeTerms}

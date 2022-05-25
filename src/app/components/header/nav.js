@@ -3,7 +3,7 @@ import MobileMenuButton from './mobile-menu-button.js'
 import NavItems from './nav-items.js'
 import SearchBox from './search-box.js'
 
-const Nav = ({ toggleMenu, setList, load }) => {
+const Nav = ({ toggleMenu, setList, load, searchBoxRef }) => {
   const markup = () => (
     <div className='mx-auto px-4'>
       <div className='flex justify-between'>
@@ -11,7 +11,7 @@ const Nav = ({ toggleMenu, setList, load }) => {
           <Logo />
         </div>
 
-        <SearchBox setList={setList} load={load} />
+        <SearchBox setList={setList} load={load} searchBoxRef={searchBoxRef} />
 
         <div className='hidden md:flex items-center space-x-3'>
           <NavItems />

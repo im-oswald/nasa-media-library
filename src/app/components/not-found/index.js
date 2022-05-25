@@ -1,7 +1,7 @@
-const NotFound = ({ mobileNav }) => {
+const NotFound = ({ searchBoxRef }) => {
   function focusOnSearchBox(event) {
     event.preventDefault()
-    mobileNav.current.focus()
+    searchBoxRef.current.focus()
   }
 
   const markup = () => {
