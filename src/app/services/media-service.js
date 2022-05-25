@@ -1,11 +1,16 @@
 import { nasaApi } from '../api'
-import { imageKeyword, defaultImagePicker } from '../constants/api-config'
+import {
+  imageKeyword,
+  defaultImagePicker,
+  defaultDataPicker,
+} from '../constants/api-config'
 import { error } from './toast'
 import {
-  digViaAttribute,
+  digViaAttributes,
   extractEntriesForPage,
   evaluatePageForApi,
   evaluatePageForResponse,
+  filterAttributes,
 } from '../utils'
 
 export const search = (
@@ -13,6 +18,8 @@ export const search = (
   entriesPerPage,
   terms = '',
   page = 0,
+  startYear = null,
+  endYear = null,
   onlyImages = true
 ) => {
   let query = `q=${terms}&page=${evaluatePageForApi(page, entriesPerPage)}`
@@ -22,7 +29,19 @@ export const search = (
     }
     nasaApi.get(`/search?${query}`).then((res) => {
       let response = res.data.collection
-      let data = digViaAttribute(response.items, defaultImagePicker)
+      let data = digViaAttributes(
+        response.items,
+        defaultImagePicker,
+        defaultDataPicker
+      )
+
+      if (startYear) {
+        data = filterAttributes('startYear', data, startYear)
+      }
+
+      if (endYear) {
+        data = filterAttributes('endYear', data, endYear)
+      }
 
       callback({
         links: response.links,
@@ -34,6 +53,8 @@ export const search = (
         currentPage: page,
         totalPages: Math.ceil(data.length / entriesPerPage),
         searchedTerms: terms,
+        startYear: startYear,
+        endYear: endYear,
       })
     })
   } catch (err) {
