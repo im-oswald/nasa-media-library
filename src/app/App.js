@@ -1,17 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Header from './components/header'
 import { Toaster } from 'react-hot-toast'
-import List from './components/list'
 import { alertPosition } from './constants/alert-config'
-import Summary from './components/summary'
 import { defaultEntriesPerPage } from './constants/pagination-config'
 import { search } from './services/media-service'
+import SearchResults from './components/search-results'
+import Details from './components/details'
 
 const App = () => {
   const [list, setList] = useState({})
   const [load, setLoad] = useState(defaultEntriesPerPage)
   const [startYear, setStartYear] = useState(null)
   const [endYear, setEndYear] = useState(null)
+  const [isDetail, setIsDetail] = useState(false)
+  const [item, setItem] = useState({})
   const mobileNav = useRef(null)
   const searchBoxRef = useRef(null)
 
@@ -28,6 +30,11 @@ const App = () => {
     }
   }, [setList, load, list.searchedTerms, list.currentPage, startYear, endYear])
 
+  function setDetail(isDetail, item) {
+    setIsDetail(isDetail)
+    setItem(item)
+  }
+
   const markup = () => (
     <React.Fragment>
       <Header
@@ -35,19 +42,24 @@ const App = () => {
         setList={setList}
         load={load}
         searchBoxRef={searchBoxRef}
+        setDetail={setDetail}
       />
-      {list.data && (
-        <Summary
+      {!isDetail && (
+        <SearchResults
           list={list}
           setList={setList}
           load={load}
           setLoad={setLoad}
           setStartYear={setStartYear}
           setEndYear={setEndYear}
-          isFiltered={startYear || endYear}
+          startYear={startYear}
+          endYear={endYear}
+          searchBoxRef={searchBoxRef}
+          setDetail={setDetail}
         />
       )}
-      <List list={list} searchBoxRef={searchBoxRef} />
+
+      {isDetail && <Details item={item} setDetail={setDetail} />}
 
       <Toaster position={alertPosition} />
     </React.Fragment>

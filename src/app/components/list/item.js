@@ -1,9 +1,16 @@
-const Item = ({ item }) => {
+const Item = ({ item, setDetail }) => {
   const markup = () => {
     const creator = item.photographer || item.secondary_creator
 
+    function itemClicked() {
+      setDetail(true, item)
+    }
+
     return (
-      <div className='max-w-sm rounded overflow-hidden shadow-lg'>
+      <div
+        onClick={itemClicked}
+        className='hover:shadow-2xl hover:shadow-indigo-500/50 max-w-sm rounded overflow-hidden shadow-lg'
+      >
         <div className='cursor-pointer h-full max-w-sm rounded overflow-hidden shadow-lg'>
           <div
             className='w-full'

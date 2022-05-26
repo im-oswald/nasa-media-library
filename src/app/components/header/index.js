@@ -1,7 +1,7 @@
 import MobileNav from './mobile-nav'
 import Nav from './nav'
 
-const Header = ({ setList, mobileNav, load, searchBoxRef }) => {
+const Header = ({ setList, mobileNav, load, searchBoxRef, setDetail }) => {
   const markup = () => (
     <nav className='bg-white shadow-lg'>
       <Nav
@@ -9,6 +9,7 @@ const Header = ({ setList, mobileNav, load, searchBoxRef }) => {
         setList={setList}
         load={load}
         searchBoxRef={searchBoxRef}
+        setDetail={setDetail}
       />
       <MobileNav mobileNav={mobileNav} />
     </nav>

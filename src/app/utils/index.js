@@ -1,11 +1,17 @@
 import { maxLoadOfRequest } from '../constants/pagination-config'
 
-export const digViaAttributes = (object, linkAttr, dataAttr) => {
+export const digViaAttributes = (
+  object,
+  linkAttr,
+  dataAttr,
+  collectionLink = 'href'
+) => {
   let results = []
   object.map((data) =>
     results.push({
       ...data[dataAttr][0],
       ...data.links.filter((link) => link.rel == linkAttr)[0],
+      collection: data[collectionLink],
     })
   )
 
@@ -42,3 +48,6 @@ export const paginationEnd = (currentPage, load, totalPages) =>
 
 export const noOfPagesPerRequest = (entriesPerPage) =>
   maxLoadOfRequest / entriesPerPage
+
+export const filterImageFiles = (data) =>
+  data.filter((item) => !item.includes('.json'))

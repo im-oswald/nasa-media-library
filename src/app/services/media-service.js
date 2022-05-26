@@ -3,6 +3,7 @@ import {
   imageKeyword,
   defaultImagePicker,
   defaultDataPicker,
+  apiBaseUrl,
 } from '../constants/api-config'
 import { error } from './toast'
 import {
@@ -11,6 +12,7 @@ import {
   evaluatePageForApi,
   evaluatePageForResponse,
   filterAttributes,
+  filterImageFiles,
 } from '../utils'
 
 export const search = (
@@ -56,6 +58,16 @@ export const search = (
         startYear: startYear,
         endYear: endYear,
       })
+    })
+  } catch (err) {
+    error(err.message)
+  }
+}
+
+export const getCollection = (callback, url) => {
+  try {
+    nasaApi.get(url.split(apiBaseUrl).join('')).then((res) => {
+      callback(filterImageFiles(res.data))
     })
   } catch (err) {
     error(err.message)
