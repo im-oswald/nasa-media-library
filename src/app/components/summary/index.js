@@ -10,6 +10,7 @@ const Summary = ({
   setStartYear,
   setEndYear,
   isFiltered,
+  setLoading,
 }) => {
   const markup = () => (
     <div className='mx-auto p-10 max-w-6xl mt-5 bg-blue-50 rounded-lg'>
@@ -29,6 +30,7 @@ const Summary = ({
             setList={setList}
             load={load}
             isFiltered={isFiltered}
+            setLoading={setLoading}
           />
         </div>
       </div>

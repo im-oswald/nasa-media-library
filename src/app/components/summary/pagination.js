@@ -3,10 +3,11 @@ import { search } from '../../services/media-service'
 import { paginationStart, paginationEnd } from '../../utils'
 import { error } from '../../services/toast'
 
-const Pagination = ({ list, setList, load, isFiltered }) => {
+const Pagination = ({ list, setList, load, isFiltered, setLoading }) => {
   function changePage(page) {
+    setLoading(true)
     search(
-      setList,
+      checkList,
       load,
       list.searchedTerms,
       page,
@@ -23,7 +24,8 @@ const Pagination = ({ list, setList, load, isFiltered }) => {
       return
     }
 
-    search(setList, load, list.searchedTerms, list.currentPage - 1)
+    setLoading(true)
+    search(checkList, load, list.searchedTerms, list.currentPage - 1)
   }
 
   function nextPage(event) {
@@ -34,14 +36,16 @@ const Pagination = ({ list, setList, load, isFiltered }) => {
       return
     }
 
+    setLoading(true)
     search(checkList, load, list.searchedTerms, list.currentPage + 1)
   }
 
   const checkList = (result) => {
     if (result.data.length) {
+      setLoading(false)
       setList(result)
     } else {
-      error('No next page found')
+      error('No data found on given page')
     }
   }
 

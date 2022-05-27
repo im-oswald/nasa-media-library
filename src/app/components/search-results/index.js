@@ -13,6 +13,7 @@ const SearchResults = ({
   endYear,
   searchBoxRef,
   setDetail,
+  setLoading,
 }) => {
   const markup = () => (
     <React.Fragment>
@@ -25,6 +26,7 @@ const SearchResults = ({
           setStartYear={setStartYear}
           setEndYear={setEndYear}
           isFiltered={startYear || endYear}
+          setLoading={setLoading}
         />
       )}
       <List list={list} searchBoxRef={searchBoxRef} setDetail={setDetail} />

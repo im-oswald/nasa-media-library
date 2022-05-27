@@ -59,6 +59,7 @@ const App = () => {
           endYear={endYear}
           searchBoxRef={searchBoxRef}
           setDetail={setDetail}
+          setLoading={setLoading}
         />
       )}
 
