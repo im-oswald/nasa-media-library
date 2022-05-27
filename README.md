@@ -105,3 +105,7 @@ You can view the development server at `localhost:3000`.
 ### Alert
 
 - [`react-hot-toast`](https://github.com/timolins/react-hot-toast) - Client to create alert to intimate users about errors
+
+### DateTime
+
+- [`moment-react`](https://github.com/headzoo/react-moment) - React component for date & time computations and formatting

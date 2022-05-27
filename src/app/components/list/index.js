@@ -7,7 +7,9 @@ const List = ({ list, searchBoxRef, setDetail }) => {
     <React.Fragment>
       {list.data && list.data.length ? (
         <div className='container mx-auto max-w-6xl mt-5'>
-          <div className='grid grid-cols-4 gap-4'>{renderItems()}</div>
+          <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+            {renderItems()}
+          </div>
         </div>
       ) : (
         <NotFound searchBoxRef={searchBoxRef} />

@@ -16,68 +16,66 @@ const Gallery = ({ item }) => {
     }
   }, [item])
 
+  const Image = ({ title, src, alt }) => {
+    return (
+      <img
+        alt={alt}
+        className='block object-cover object-center w-full h-full rounded-lg'
+        src={src}
+        title={title}
+      />
+    )
+  }
+
   const markup = () => (
     <React.Fragment>
-      <section className='overflow-hidden text-gray-700'>
-        <div className='container px-5 py-2 mx-auto lg:pt-24 lg:px-32'>
-          <div className='flex flex-wrap -m-1 md:-m-2'>
-            <div className='flex flex-wrap w-1/2'>
-              {smallImage && (
-                <div className='w-1/2 p-1 md:p-2'>
-                  <img
-                    alt='small-variant'
-                    className='block object-cover object-center w-full h-full rounded-lg'
-                    src={smallImage}
-                    title='Small Variant'
-                  />
-                </div>
-              )}
-              {thumbnail && (
-                <div className='w-1/2 p-1 md:p-2'>
-                  <img
-                    alt='thumbnail'
-                    className='block object-cover object-center w-full h-full rounded-lg'
-                    src={thumbnail}
-                    title='Thumbnail'
-                  />
-                </div>
-              )}
-              {originalImage && (
-                <div className='w-full p-1 md:p-2'>
-                  <img
-                    alt='original-variant'
-                    className='block object-cover object-center w-full h-full rounded-lg'
-                    src={originalImage}
-                    title='Original Variant'
-                  />
-                </div>
-              )}
+      <div className='flex flex-wrap -m-1 md:-m-2'>
+        <div className='flex flex-wrap w-1/2'>
+          {smallImage && (
+            <div className='w-1/2 p-1 md:p-2'>
+              <Image
+                title='Small Variant'
+                src={smallImage}
+                alt='small-variant'
+              />
             </div>
-            <div className='flex flex-wrap w-1/2'>
-              {mediumImage && (
-                <div className='w-full p-1 md:p-2'>
-                  <img
-                    alt='gallery'
-                    className='block object-cover object-center w-full h-full rounded-lg'
-                    src={mediumImage}
-                    title='Medium Variant'
-                  />
-                </div>
-              )}
-              {largeImage && (
-                <div className='w-full p-1 md:p-2'>
-                  <img
-                    alt='gallery'
-                    className='block object-cover object-center w-full h-full rounded-lg'
-                    src={largeImage}
-                    title='Large Variant'
-                  />
-                </div>
-              )}
+          )}
+          {thumbnail && (
+            <div className='w-1/2 p-1 md:p-2'>
+              <Image title='Thumbnail' src={thumbnail} alt='thumbnail' />
             </div>
-          </div>
+          )}
+          {originalImage && (
+            <div className='w-full p-1 md:p-2'>
+              <Image
+                title='Original Variant'
+                src={originalImage}
+                alt='original-variant'
+              />
+            </div>
+          )}
         </div>
-      </section>
+        <div className='flex flex-wrap w-1/2'>
+          {mediumImage && (
+            <div className='w-full p-1 md:p-2'>
+              <Image
+                title='Medium Variant'
+                src={mediumImage}
+                alt='medium-variant'
+              />
+            </div>
+          )}
+          {largeImage && (
+            <div className='w-full p-1 md:p-2'>
+              <Image
+                title='Large Variant'
+                src={largeImage}
+                alt='large-variant'
+              />
+            </div>
+          )}
+        </div>
+      </div>
     </React.Fragment>
   )
 

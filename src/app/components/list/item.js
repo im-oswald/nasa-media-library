@@ -35,7 +35,7 @@ const Item = ({ item, setDetail }) => {
             <div className='flex p-5 items-center'>
               <img
                 className='w-10 h-10 rounded-full mr-4'
-                src='/assets/icons/photographer.png'
+                src='/assets/icons/photographer.svg'
                 alt='Avatar of Jonathan Reinink'
               />
               <div className='text-sm'>
