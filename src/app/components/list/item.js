@@ -36,7 +36,7 @@ const Item = ({ item, setDetail }) => {
               <img
                 className='w-10 h-10 rounded-full mr-4'
                 src='/assets/icons/photographer.svg'
-                alt='Avatar of Jonathan Reinink'
+                alt='Photographer'
               />
               <div className='text-sm'>
                 <p className='text-gray-900 leading-none'>{creator}</p>
