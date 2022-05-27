@@ -3,7 +3,7 @@ import { search } from '../../services/media-service'
 import { error } from '../../services/toast'
 import ValidationHelper from '../../helpers/validation-helper'
 
-const SearchBox = ({ setList, load, searchBoxRef, setDetail }) => {
+const SearchBox = ({ setList, load, searchBoxRef, setDetail, setLoading }) => {
   const [terms, setTerms] = useState('')
 
   function onChangeTerms(event) {
@@ -18,6 +18,8 @@ const SearchBox = ({ setList, load, searchBoxRef, setDetail }) => {
       return
     }
 
+    setLoading(true)
+
     search(populateResults, load, terms)
 
     setTerms('')
@@ -26,6 +28,7 @@ const SearchBox = ({ setList, load, searchBoxRef, setDetail }) => {
   const populateResults = (result) => {
     setList(result)
     setDetail(false, {})
+    setLoading(false)
   }
 
   const markup = () => (

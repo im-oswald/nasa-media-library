@@ -6,6 +6,7 @@ import { defaultEntriesPerPage } from './constants/pagination-config'
 import { search } from './services/media-service'
 import SearchResults from './components/search-results'
 import Details from './components/details'
+import Loader from './components/loader'
 
 const App = () => {
   const [list, setList] = useState({})
@@ -14,6 +15,7 @@ const App = () => {
   const [endYear, setEndYear] = useState(null)
   const [isDetail, setIsDetail] = useState(false)
   const [item, setItem] = useState({})
+  const [loading, setLoading] = useState(false)
   const mobileNav = useRef(null)
   const searchBoxRef = useRef(null)
 
@@ -43,6 +45,7 @@ const App = () => {
         load={load}
         searchBoxRef={searchBoxRef}
         setDetail={setDetail}
+        setLoading={setLoading}
       />
       {!isDetail && (
         <SearchResults
@@ -62,6 +65,7 @@ const App = () => {
       {isDetail && <Details item={item} setDetail={setDetail} />}
 
       <Toaster position={alertPosition} />
+      <Loader loading={loading} />
     </React.Fragment>
   )
 
