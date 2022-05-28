@@ -3,26 +3,31 @@ import HeaderHelper from '../../helpers/header-helper'
 import { navItems } from '../../constants/header-config'
 
 const NavItems = () => {
-  const renderNavItems = () => {
-    let html = []
-    navItems.map((item) =>
-      html.push(
-        <li className='list-none'>
-          <a
-            key={item.id}
-            href={item.link}
-            target={item.open}
-            className={HeaderHelper.joinClasses(item)}
-          >
-            {item.title}
-          </a>
-        </li>
-      )
+  // helper component to show individual nav item
+  const NavItem = ({ item }) => {
+    return (
+      <li key={item.id} className='list-none'>
+        <a
+          href={item.link}
+          target={item.open}
+          className={HeaderHelper.joinClasses(item)}
+        >
+          {item.title}
+        </a>
+      </li>
     )
-    return html
   }
 
-  return <React.Fragment>{renderNavItems()}</React.Fragment>
+  // markup method to show nav items for navigation
+  const markup = () => (
+    <React.Fragment>
+      {navItems.map((item, index) => (
+        <NavItem key={index} item={item} />
+      ))}
+    </React.Fragment>
+  )
+
+  return markup()
 }
 
 export default NavItems

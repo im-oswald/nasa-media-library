@@ -1,4 +1,5 @@
 const MobileMenuButton = ({ toggleMenu }) => {
+  // markup method to show menu button for mobile screens
   const markup = (toggleMenu) => (
     <div className='md:hidden flex items-center'>
       <button className='outline-none mobile-menu-button' onClick={toggleMenu}>

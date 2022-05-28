@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Loader = ({ loading }) => {
+  // markup method to show loader when API is busy
   const markup = () => (
     <React.Fragment>
       {loading && (

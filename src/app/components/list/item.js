@@ -1,7 +1,11 @@
 const Item = ({ item, setDetail }) => {
   const markup = () => {
+    // markup method to show every single result
+    // results in API is observed to have either photographer or secondary_creator
+    // for some results both are missing
     const creator = item.photographer || item.secondary_creator
 
+    // method got trigger on clicking any item to show details
     function itemClicked() {
       setDetail(true, item)
     }

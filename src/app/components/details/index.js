@@ -7,8 +7,11 @@ import Location from './location'
 import Photographer from './photographer'
 
 const Details = ({ item, setDetail }) => {
+  // results in API is observed to have either photographer or secondary_creator
+  // for some results both are missing
   const creator = item.photographer || item.secondary_creator
 
+  // markup method to show details page
   const markup = () => (
     <React.Fragment>
       <div className='container mx-auto max-w-6xl mt-5'>
@@ -24,7 +27,7 @@ const Details = ({ item, setDetail }) => {
               <Photographer creator={creator} />
               <Keywords keywords={item.keywords} />
             </div>
-            <div className='flex flex-col md:flex-row justify-between'>
+            <div className='flex flex-col md:flex-row justify-between mt-5'>
               <Location location={item.location} />
               <CreatedDate date_created={item.date_created} />
             </div>

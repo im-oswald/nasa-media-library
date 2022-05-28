@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Location = ({ location }) => {
+  // markup method to show location string
   const markup = () => (
     <React.Fragment>
       {location && (
@@ -8,6 +9,7 @@ const Location = ({ location }) => {
           <div className='cursor-pointer h-full max-w-sm rounded overflow-hidden shadow-lg'>
             <div className='flex p-5 items-center'>
               <img
+                alt='location'
                 className='w-10 h-10 rounded-full mr-4'
                 src='/assets/icons/location.svg'
               />

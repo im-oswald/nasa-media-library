@@ -15,6 +15,7 @@ const SearchResults = ({
   setDetail,
   setLoading,
 }) => {
+  // markup method to show results along with pagination, filters and load option
   const markup = () => (
     <React.Fragment>
       {list.data && (

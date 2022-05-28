@@ -1,4 +1,5 @@
 const Logo = () => {
+  // markup method to show logo that could navigate to root page
   const markup = () => (
     <div>
       <a href='/' className='flex items-center py-4 px-2'>

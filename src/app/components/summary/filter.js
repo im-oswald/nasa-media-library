@@ -2,6 +2,7 @@ import ValidationHelper from '../../helpers/validation-helper'
 import { error } from '../../services/toast'
 
 const Filter = ({ setStartYear, setEndYear }) => {
+  // method got triggered incase of change by user in either startYear or endYear
   function setYear({ target }) {
     if (ValidationHelper.validYear(target.value)) {
       target.id.includes('start')
@@ -12,6 +13,7 @@ const Filter = ({ setStartYear, setEndYear }) => {
     }
   }
 
+  // markup method to show startYear and endYear filters
   const markup = () => (
     <div className='flex'>
       <div className='mb-4 mr-4'>

@@ -12,6 +12,7 @@ const Summary = ({
   isFiltered,
   setLoading,
 }) => {
+  // markup method to show pagination, filters and load option
   const markup = () => (
     <div className='mx-auto p-10 max-w-6xl mt-5 bg-blue-50 rounded-lg'>
       <h1 className='font-medium leading-tight text-xl md:text-3xl mt-0 mb-2 text-blue-600 mb-5'>

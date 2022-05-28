@@ -11,6 +11,7 @@ const Nav = ({
   setDetail,
   setLoading,
 }) => {
+  // markup method to show navitems along with header and logo
   const markup = () => (
     <div className='mx-auto px-4'>
       <div className='flex justify-between'>

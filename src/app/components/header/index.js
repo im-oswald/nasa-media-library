@@ -9,6 +9,7 @@ const Header = ({
   setDetail,
   setLoading,
 }) => {
+  // markup method to show header
   const markup = () => (
     <nav className='bg-white shadow-lg'>
       <Nav
@@ -23,6 +24,7 @@ const Header = ({
     </nav>
   )
 
+  // reference based hiding web nav and showing mobile nav
   const toggleMenu = () => {
     mobileNav.current?.classList.toggle('hidden')
   }

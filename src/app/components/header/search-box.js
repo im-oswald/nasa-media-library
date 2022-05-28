@@ -6,10 +6,12 @@ import ValidationHelper from '../../helpers/validation-helper'
 const SearchBox = ({ setList, load, searchBoxRef, setDetail, setLoading }) => {
   const [terms, setTerms] = useState('')
 
+  // method that got triggered on every letter change
   function onChangeTerms(event) {
     setTerms(event.target.value)
   }
 
+  // method that got triggered on search event
   function searchItems(event) {
     if (event.key !== 'Enter') return
 
@@ -25,12 +27,14 @@ const SearchBox = ({ setList, load, searchBoxRef, setDetail, setLoading }) => {
     setTerms('')
   }
 
+  // callback function to set data and loading
   const populateResults = (result) => {
     setList(result)
     setDetail(false, {})
     setLoading(false)
   }
 
+  // markup method to show search box
   const markup = () => (
     <div className='md:flex md:w-1/4 items-center space-x-1 py-4'>
       <input

@@ -32,11 +32,15 @@ const App = () => {
     }
   }, [setList, load, list.searchedTerms, list.currentPage, startYear, endYear])
 
+  // method that allows to switch between search results and details page
   function setDetail(isDetail, item) {
     setIsDetail(isDetail)
     setItem(item)
   }
 
+  // markup that shows either results or details page on item click
+  // could show the loading when API is busy
+  // could show toast in case of error
   const markup = () => (
     <React.Fragment>
       <Header

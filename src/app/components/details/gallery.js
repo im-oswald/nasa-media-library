@@ -10,12 +10,14 @@ const Gallery = ({ item }) => {
   const thumbnail = CollectionHelper.getThumbnail(collection)
   const originalImage = CollectionHelper.getOriginalImage(collection)
 
+  // re-render component when API gives the response on collection
   useEffect(() => {
     if (item) {
       getCollection(setCollection, item.collection)
     }
   }, [item])
 
+  // helper component to show images in collection
   const Image = ({ title, src, alt }) => {
     return (
       <img
@@ -27,6 +29,7 @@ const Gallery = ({ item }) => {
     )
   }
 
+  // markup method to show gallery section
   const markup = () => (
     <React.Fragment>
       <div className='flex flex-wrap -m-1 md:-m-2'>

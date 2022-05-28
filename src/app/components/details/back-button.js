@@ -1,8 +1,10 @@
 const BackButton = ({ setDetail }) => {
+  // function that will be triggered on back button click
   function goBack() {
     setDetail(false, {})
   }
 
+  // markup method to show back button
   const markup = () => (
     <button
       onClick={goBack}

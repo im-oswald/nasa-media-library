@@ -1,3 +1,4 @@
+// configuration to show navigation - configurable
 export const navItems = [
   {
     id: 'nav-item-code',
@@ -21,4 +22,5 @@ export const navItems = [
   },
 ]
 
+// tailwind classes to make navigation tab
 export const defaultNavClasses = 'py-2 px-2 font-medium transition duration-300'
