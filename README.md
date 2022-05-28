@@ -3,7 +3,7 @@
 
 ```
 git clone https://github.com/im-oswald/nasa-media-library.git
-cd react-webpack-5-tailwind-2
+cd nasa-media-library
 yarn / npm i
 ```
 
